@@ -76,8 +76,8 @@ main:focus,h1:focus,h2:focus{outline:none}
 .topnav a[aria-current="page"]{color:var(--amber);background:var(--surface)}
 
 /* Bottom tabs */
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:repeat(5,1fr);background:color-mix(in srgb,var(--bg2) 95%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
-.tabs a,.tabs button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;height:var(--tabs-h);border:0;background:none;color:var(--muted);text-decoration:none;font:inherit;font-size:.72rem;font-weight:600;letter-spacing:.02em;cursor:pointer}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));background:color-mix(in srgb,var(--bg2) 95%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabs a,.tabs button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;height:var(--tabs-h);border:0;background:none;color:var(--muted);text-decoration:none;font:inherit;font-size:.7rem;font-weight:600;letter-spacing:.01em;cursor:pointer}
 .tabs [aria-current="page"]{color:var(--amber)}
 .tabs [aria-current="page"] svg{stroke-width:2.2}
 
@@ -260,7 +260,10 @@ legend{font-family:var(--serif);font-size:1.1rem;font-weight:600;padding:0;margi
 .fc-back{transform:rotateY(180deg);background:linear-gradient(150deg,color-mix(in srgb,var(--leather) 34%,var(--surface)),var(--surface) 65%)}
 .fc-tag{font-size:.74rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--copper);margin-bottom:12px}
 .fc-q{font-family:var(--serif);font-size:1.3rem;line-height:1.3;margin:0 0 14px}
-.fc-opts{list-style:upper-alpha;margin:0;padding-left:1.5em;color:var(--muted);font-size:.96rem}
+.fc-opts{display:grid;gap:8px}
+.fc-opt{min-height:var(--tap);padding:10px 12px;font-size:.96rem;-webkit-tap-highlight-color:transparent}
+.fc-face .q-fb{margin:12px 0 0;font-size:.96rem}
+.fc-actions .btn{scroll-margin-bottom:calc(var(--tabs-h) + env(safe-area-inset-bottom,0px) + 16px)}
 .fc-a{font-family:var(--serif);font-size:1.3rem;line-height:1.3;color:var(--amber);margin:0 0 12px}
 .fc-hint{margin-top:auto;padding-top:14px;font-size:.82rem;color:var(--muted);text-align:center}
 .fc.drag .fc-inner{transition:none}
@@ -273,9 +276,10 @@ legend{font-family:var(--serif);font-size:1.1rem;font-weight:600;padding:0;margi
 .q-card{max-width:680px;margin:0 auto}
 .q-opts{display:grid;gap:10px;margin:16px 0}
 .q-opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:54px;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg2);color:var(--text);font:inherit;cursor:pointer}
-.q-opt:hover:not([disabled]){border-color:var(--copper)}
+.q-opt:hover:not([disabled]):not([aria-disabled="true"]):not(li){border-color:var(--copper)}
 .q-opt .k{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);font-weight:700;font-size:.85rem;color:var(--amber)}
-.q-opt[disabled]{cursor:default}
+.q-opt[disabled],.q-opt[aria-disabled="true"]{cursor:default}
+.q-opt small{display:block;color:var(--muted);font-size:.86rem;margin-top:2px}
 .q-opt.gone{opacity:.35;text-decoration:line-through}
 .q-opt.right{border-color:var(--good);background:var(--good-bg)}
 .q-opt.right .k{background:var(--good);color:var(--bg)}
@@ -290,6 +294,31 @@ legend{font-family:var(--serif);font-size:1.1rem;font-weight:600;padding:0;margi
 .missed{list-style:none;margin:0;padding:0}
 .missed li{border:1px solid var(--line);border-radius:12px;padding:13px 14px;margin:0 0 10px;background:var(--bg2)}
 .missed .yours{color:var(--bad)} .missed .right-a{color:var(--good)}
+
+/* Practice */
+.mode{display:flex;gap:14px;align-items:flex-start;text-decoration:none;color:var(--text)}
+.mode:hover{border-color:var(--copper);color:var(--text)}
+.mode svg{color:var(--amber);margin-top:3px}
+.mode h2{font-size:1.2rem;margin:0 0 .15em}
+.mode p{margin:0}
+.p-stage{max-width:680px;margin:0 auto}
+.setlist{display:grid;gap:10px}
+.setbtn{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:54px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit;font-weight:600;text-align:left;cursor:pointer}
+.setbtn:hover{border-color:var(--copper)}
+.setbtn small{flex:none;font-weight:500;font-size:.84rem;color:var(--muted)}
+.match{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:8px}
+.match.wide-l{grid-template-columns:minmax(0,3fr) minmax(0,2fr)}
+.tile{display:flex;align-items:center;min-height:52px;padding:8px 11px;border-radius:12px;border:1px solid var(--line);background:var(--bg2);color:var(--text);font:inherit;font-size:.92rem;line-height:1.35;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tile.term{font-family:var(--serif);font-weight:600;font-size:1rem}
+.tile.sel{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 16%,var(--bg2));box-shadow:inset 0 0 0 1px var(--amber)}
+.tile.ok{border-color:var(--good);background:var(--good-bg);color:var(--muted);cursor:default}
+.tile.bad,.q-opt.nope{border-color:var(--bad);background:var(--bad-bg);animation:nope .3s}
+@keyframes nope{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.ord-done{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:10px}
+.ord-done li{margin:0;cursor:default}
+.ls-a{min-height:4.8em}
+.ls-ctl{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:10px}
+.ls-ctl .btn{padding:0 8px;white-space:nowrap}
 
 /* Journal and search */
 .entry h3{margin:0 0 .15em;color:var(--text)}
@@ -384,6 +413,8 @@ mark{background:color-mix(in srgb,var(--amber) 38%,transparent);color:inherit;bo
   <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3A4 4 0 0 0 13 5.3l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 11 18.7l1-1"/></symbol>
   <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></symbol>
 </svg>
 
 <header class="top">
@@ -399,6 +430,7 @@ mark{background:color-mix(in srgb,var(--amber) 38%,transparent);color:inherit;bo
     <a href="#/finder" data-nav="finder">Cigar Finder</a>
     <a href="#/cards" data-nav="cards">Flashcards</a>
     <a href="#/quiz" data-nav="quiz">Quiz</a>
+    <a href="#/practice" data-nav="practice">Practice</a>
     <a href="#/checklists" data-nav="checklists">Checklists</a>
     <a href="#/humidor" data-nav="humidor">Humidor</a>
     <a href="#/regulars" data-nav="regulars">Regulars</a>
@@ -418,6 +450,7 @@ mark{background:color-mix(in srgb,var(--amber) 38%,transparent);color:inherit;bo
       <p id="shiftChip"></p>
       <div class="row">
         <a class="btn" id="btnContinue" href="#/guide/plan">Start the study guide</a>
+        <a class="btn ghost" href="#/practice">Practice</a>
         <a class="btn ghost" href="#/finder">Cigar Finder</a>
       </div>
     </div>
@@ -564,6 +597,13 @@ mark{background:color-mix(in srgb,var(--amber) 38%,transparent);color:inherit;bo
     <div id="quizBody"></div>
   </section>
 
+  <!-- PRACTICE -->
+  <section class="view" id="v-practice" hidden>
+    <p class="kicker">Practice</p>
+    <h1 tabindex="-1" id="pracTitle">Practice</h1>
+    <div id="pracBody"></div>
+  </section>
+
   <!-- CHECKLISTS -->
   <section class="view" id="v-checklists" hidden>
     <p class="kicker">On shift</p>
@@ -630,6 +670,7 @@ mark{background:color-mix(in srgb,var(--amber) 38%,transparent);color:inherit;bo
   <a href="#/guide" data-nav="guide"><svg class="i" aria-hidden="true"><use href="#i-book"/></svg>Guide</a>
   <a href="#/cards" data-nav="cards"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>Cards</a>
   <a href="#/quiz" data-nav="quiz"><svg class="i" aria-hidden="true"><use href="#i-quiz"/></svg>Quiz</a>
+  <a href="#/practice" data-nav="practice"><svg class="i" aria-hidden="true"><use href="#i-bolt"/></svg>Practice</a>
   <button type="button" id="btnMore" aria-haspopup="dialog"><svg class="i" aria-hidden="true"><use href="#i-more"/></svg>More</button>
 </nav>
 
@@ -1344,7 +1385,8 @@ function niceDate(s){ var m = /^(\d{4})-(\d\d)-(\d\d)/.exec(s || ""); if (!m) re
 function plural(n, one, many){ return n + " " + (n === 1 ? one : (many || one + "s")); }
 
 /* ---------- Saved progress (localStorage, safe if unavailable) ---------- */
-function DEF(){ return {v:1, theme:"dark", read:{}, checks:{}, lists:{}, cards:{}, quiz:{best:{}, hist:[]}, humidor:[], regulars:[], journal:[], last:null, choices:true}; }
+function DEF(){ return {v:1, theme:"dark", read:{}, checks:{}, lists:{}, cards:{}, quiz:{best:{}, hist:[]}, humidor:[], regulars:[], journal:[], last:null, choices:true,
+  miss:{}, practice:{match:{}, type:{}, say:{}, order:{}}, listen:{gap:"4", rate:"1", mix:"0"}}; }
 var S = DEF(), saveWarned = false;
 function merge(base, inc){
   Object.keys(base).forEach(function(k){
@@ -1352,7 +1394,7 @@ function merge(base, inc){
     if (v === undefined || v === null) return;
     if (Array.isArray(b)){ if (Array.isArray(v)) base[k] = v; }
     else if (b === null){ if (typeof v === "object") base[k] = v; }
-    else if (typeof b === "object"){ if (typeof v === "object" && !Array.isArray(v)) base[k] = (k === "quiz") ? merge(b, v) : v; }
+    else if (typeof b === "object"){ if (typeof v === "object" && !Array.isArray(v)) base[k] = (k === "quiz" || k === "practice" || k === "listen") ? merge(b, v) : v; }
     else if (typeof v === typeof b) base[k] = v;
   });
   return base;
@@ -1400,7 +1442,7 @@ function price(c){ return c.lo ? "$" + c.lo + "–" + c.hi : NOT_US; }
 /* ---------- Pages ---------- */
 var PAGES = [
   ["home","Home","home"],["guide","Study Guide","book"],["top50","Top 50 Cigars","star"],["finder","Cigar Finder","compass"],
-  ["cards","Flashcards","cards"],["quiz","Quiz","quiz"],["checklists","Checklists","list"],["humidor","Humidor Tracker","box"],
+  ["cards","Flashcards","cards"],["quiz","Quiz","quiz"],["practice","Practice","bolt"],["checklists","Checklists","list"],["humidor","Humidor Tracker","box"],
   ["regulars","Regulars Tracker","users"],["journal","Tasting Journal","pen"],["resources","Resources","link"],["search","Search","search"]
 ];
 function pageLinks(skip){
@@ -1672,6 +1714,12 @@ function optOrder(c){ /* a stable, card-specific order so the right answer isn't
   return idx;
 }
 function cs(id){ return S.cards[id] || {b:0, d:0}; }
+/* Cards missed lately, in the flashcards or a quiz. A right answer works one miss off. */
+function noteMiss(id, missed){
+  var n = S.miss[id] || 0;
+  if (missed) S.miss[id] = Math.min(n + 1, 5); else if (n > 1) S.miss[id] = n - 1; else delete S.miss[id];
+}
+function weakCards(){ return ALLCARDS.filter(function(c){ return S.miss[c.id] > 0; }).sort(function(a, b){ return S.miss[b.id] - S.miss[a.id]; }); }
 function isMastered(id){ return cs(id).b >= 2; }
 var INTERVAL = [0, 0, 2, 5, 10]; /* days until a card returns, by level */
 var F = null;
@@ -1686,19 +1734,23 @@ function deckStats(deck){
   return {total:deck.cards.length, done:deck.cards.filter(function(c){ return isMastered(c.id); }).length, due:deck.cards.filter(function(c){ return cs(c.id).d <= now; }).length};
 }
 function renderDecks(){
+  var weak = weakCards().length;
   $("#cardsTitle").textContent = "Flashcards";
-  $("#cardsBody").innerHTML = '<p class="lede">Two decks. Tap a card to flip it, then mark it “Got it” or “Review again”.</p><div class="grid two">' +
+  $("#cardsBody").innerHTML = '<p class="lede">Two decks. Tap an answer to check yourself, or tap the card to flip it and mark it “Got it” or “Review again”.</p><div class="grid two">' +
     DECKS.map(function(d){
       var s = deckStats(d);
       return '<a class="card deck nomt" href="#/cards/' + d.id + '"><h2>' + d.name + '</h2><p class="muted">' + d.blurb + '</p>' +
         '<div class="spread small"><span>' + s.done + ' of ' + s.total + ' mastered</span><span class="chip' + (s.due ? " amber" : "") + '">' + (s.due ? s.due + " due now" : "All caught up") + '</span></div>' +
         '<div class="bar"><i style="width:' + Math.round(s.done / s.total * 100) + '%"></i></div></a>';
     }).join("") + '</div>' +
-    '<div class="card" style="margin-top:14px"><h2>How the spacing works</h2><ul>' +
+    (weak ? '<p class="note" style="margin-top:14px">You\'ve missed ' + plural(weak, "card") + ' lately. <a href="#/quiz" data-weakquiz>Drill your weak spots in a quiz</a>.</p>' : '') +
+    '<div class="card" style="margin-top:14px"><h2>How the cards work</h2><ul>' +
+    '<li><strong>Tap an answer</strong> and the card tells you if you were right. A right answer counts as “Got it”, and a wrong one comes back within a few cards.</li>' +
+    '<li>Want to answer from memory instead? Tap “Hide choices”, flip the card, and grade yourself.</li>' +
     '<li><strong>Got it</strong> moves a card up a level. It comes back once more this session, then after 2, 5, and 10 days.</li>' +
     '<li><strong>Review again</strong> sends a card back to the start, and it returns within a few cards.</li>' +
     '<li>A card counts as <strong>mastered</strong> once you get it twice in a row.</li>' +
-    '<li>On a phone, swipe right for “Got it” and left for “Review again”. On a keyboard, use Space to flip and the arrow keys to grade.</li></ul></div>';
+    '<li>On a phone, swipe right for “Got it” and left for “Review again”. On a keyboard, use 1 to 4 to answer, Space to flip, and the arrow keys to grade.</li></ul></div>';
 }
 function startDeck(deck, all){ F = {deck:deck, queue:buildQueue(deck, all), flipped:false}; }
 function renderCard(){
@@ -1717,30 +1769,51 @@ function renderCard(){
   }
   var c = CARDS[F.queue[0]], st = cs(c.id), order = optOrder(c);
   var level = st.b >= 2 ? "Mastered" : st.b === 1 ? "Learning" : "New";
-  F.flipped = false;
+  F.flipped = false; F.pick = null;
   body.innerHTML = head +
     '<div class="fc" id="fc"><div class="fc-inner">' +
-      '<div class="fc-face fc-front"><div class="fc-tag">' + TOPIC_NAME[c.t] + ' · ' + level + '</div><p class="fc-q">' + esc(c.q) + '</p>' +
-        (S.choices ? '<ol class="fc-opts">' + order.map(function(i){ return "<li>" + esc(c.o[i]) + "</li>"; }).join("") + '</ol>' : '') +
-        '<div class="fc-hint">Tap the card to see the answer</div></div>' +
+      '<div class="fc-face fc-front"><div class="fc-tag">' + TOPIC_NAME[c.t] + ' · ' + level + '</div><p class="fc-q" id="fcQ">' + esc(c.q) + '</p>' +
+        (S.choices ? '<div class="fc-opts" role="group" aria-labelledby="fcQ">' + order.map(function(i, k){ return '<button class="q-opt fc-opt" type="button" data-pick="' + i + '"><span class="k" aria-hidden="true">' + "ABCD".charAt(k) + '</span><span>' + esc(c.o[i]) + '</span></button>'; }).join("") + '</div><div id="fcFb"></div>' : '') +
+        '<div class="fc-hint">' + (S.choices ? "Tap an answer, or tap the card to flip it" : "Tap the card to see the answer") + '</div></div>' +
       '<div class="fc-face fc-back" aria-hidden="true"><div class="fc-tag">Answer</div><p class="fc-a">' + esc(c.o[0]) + '</p><p>' + esc(c.e) + '</p>' +
         '<div class="fc-hint">Swipe right: got it · Swipe left: review again</div></div>' +
     '</div></div>' +
     '<div class="sr" aria-live="polite" id="fcLive"></div>' +
-    '<div class="fc-actions"><button class="btn again" type="button" data-fc="again">Review again</button><button class="btn gotit" type="button" data-fc="got">Got it</button></div>' +
+    '<div class="fc-actions" id="fcActions"><button class="btn again" type="button" data-fc="again">Review again</button><button class="btn gotit" type="button" data-fc="got">Got it</button></div>' +
     '<div class="fc-tools"><button class="btn quiet sm" type="button" data-fc="flip" id="fcFlip">Flip card</button><button class="btn quiet sm" type="button" data-fc="shuffle">Shuffle</button>' +
     '<button class="btn quiet sm" type="button" data-fc="choices" aria-pressed="' + !!S.choices + '">' + (S.choices ? "Hide choices" : "Show choices") + '</button></div></div>';
   bindSwipe($("#fc"));
+}
+/* Tapping a choice checks it on the spot. The grade is applied when the card moves on. */
+function pickCard(i){
+  var fc = $("#fc");
+  if (!fc || !F || F.busy || F.flipped || F.pick !== null || Date.now() - (F.dragAt || 0) < 350) return;
+  var c = CARDS[F.queue[0]], ok = i === 0;
+  F.pick = i;
+  $$(".fc-opt", fc).forEach(function(b){
+    var n = +b.getAttribute("data-pick");
+    b.setAttribute("aria-disabled", "true");
+    if (n === 0) b.classList.add("right"); else if (n === i) b.classList.add("wrong");
+  });
+  $("#fcFb").innerHTML = '<div class="q-fb ' + (ok ? "ok" : "no") + '"><b>' + (ok ? "Correct." : "Not quite. The answer is: " + esc(c.o[0])) + '</b>' + esc(c.e) + '</div>';
+  $(".fc-hint", fc).textContent = ok ? "Swipe right for the next card" : "This one comes back within a few cards";
+  $("#fcActions").innerHTML = ok ?
+    '<button class="btn quiet" type="button" data-fc="again">I guessed</button><button class="btn gotit" type="button" data-fc="got" id="fcNext">Next card</button>' :
+    '<button class="btn again" type="button" data-fc="again" id="fcNext" style="grid-column:1/-1">Next card</button>';
+  $("#fcLive").textContent = (ok ? "Correct. " : "Not quite. The answer is: " + c.o[0] + ". ") + c.e;
+  var next = $("#fcNext"); next.focus({preventScroll:true}); next.scrollIntoView({block:"nearest", behavior:"smooth"});
 }
 function flipCard(){
   var fc = $("#fc"); if (!fc || F.busy) return;
   F.flipped = !F.flipped; fc.classList.toggle("flipped", F.flipped);
   $(".fc-front", fc).setAttribute("aria-hidden", F.flipped); $(".fc-back", fc).setAttribute("aria-hidden", !F.flipped);
+  $(".fc-front", fc).inert = F.flipped; /* keeps the hidden choices out of the tab order */
   var c = CARDS[F.queue[0]];
   $("#fcLive").textContent = F.flipped ? "Answer: " + c.o[0] + ". " + c.e : "Question: " + c.q;
 }
 function grade(got){
   if (!F || !F.queue.length || F.busy) return;
+  if (F.pick > 0) got = false; /* a wrong pick always comes back */
   F.busy = true;
   var id = F.queue.shift(), st = {b:cs(id).b, d:0}, now = Date.now();
   if (got){
@@ -1749,7 +1822,7 @@ function grade(got){
   } else {
     st.b = 0; st.d = now; F.queue.splice(Math.min(3, F.queue.length), 0, id);
   }
-  S.cards[id] = st; save();
+  S.cards[id] = st; noteMiss(id, !got); save();
   var fc = $("#fc");
   if (fc){ fc.style.transition = "transform .18s ease-in, opacity .18s"; fc.style.transform = "translateX(" + (got ? 120 : -120) + "%) rotate(" + (got ? 8 : -8) + "deg)"; fc.style.opacity = "0"; }
   setTimeout(function(){
@@ -1771,7 +1844,8 @@ function bindSwipe(fc){
   });
   function end(e){
     if (!down) return; down = false; fc.classList.remove("drag");
-    if (!moved){ if (e.type === "pointerup") flipCard(); return; }
+    if (!moved){ if (e.type === "pointerup" && !(e.target.closest && e.target.closest(".fc-opt"))) flipCard(); return; }
+    if (F) F.dragAt = Date.now();
     if (e.type === "pointerup" && Math.abs(dx) > 80){ grade(dx > 0); return; }
     fc.style.transition = "transform .2s"; fc.style.transform = "";
     setTimeout(function(){ fc.style.transition = ""; }, 220);
@@ -1784,20 +1858,37 @@ function bindSwipe(fc){
 var Q = null, QS = {src:"starter", topic:"all", len:"10", timed:"0"}, qTimer = null;
 function stopTimer(){ if (qTimer){ clearInterval(qTimer); qTimer = null; } }
 function poolFor(topic){ return ALLCARDS.filter(function(c){ return topic === "all" || c.t === topic; }); }
-function prep(c){ var order = shuffle([0, 1, 2, 3]); return {q:c.q, opts:order.map(function(i){ return c.o[i]; }), ans:order.indexOf(0), e:c.e, t:c.t}; }
+function prep(c){ var order = shuffle([0, 1, 2, 3]); return {id:c.id, q:c.q, opts:order.map(function(i){ return c.o[i]; }), ans:order.indexOf(0), e:c.e, t:c.t}; }
+/* Top 50 drill: questions written on the spot from the Top 50 table. */
+function t50Cards(){
+  var makers = [], lands = ["Dominican Republic", "Nicaragua", "Honduras", "Cuba"], bodies = Object.keys(BODY_NUM), out = [];
+  TOP50.forEach(function(c){ if (makers.indexOf(c.maker) < 0) makers.push(c.maker); });
+  function others(list, right){ return shuffle(list.filter(function(x){ return x !== right; })).slice(0, 3); }
+  TOP50.forEach(function(c){
+    var e = c.name + ": " + c.maker + ", " + c.origin + ", " + c.body.toLowerCase() + " body.", name = norm(c.name);
+    var given = norm(c.maker).split(/[^a-z]+/).some(function(w){ return w.length > 3 && name.indexOf(w) > -1; });
+    if (!given) out.push({q:"Who makes " + c.name + "?", o:[c.maker].concat(others(makers, c.maker)), e:e});
+    if (lands.indexOf(c.origin) > -1) out.push({q:"Where is " + c.name + " made?", o:[c.origin].concat(others(lands, c.origin)), e:e + (c.lo ? "" : " Cuban cigars are not legal to sell in the US.")});
+    out.push({q:"How does the guide rate the body of " + c.name + "?", o:[c.body].concat(others(bodies, c.body)), e:e + " Body ratings are general: they shift by size and blend."});
+  });
+  return out;
+}
 function bestPct(){ var b = 0, any = false; Object.keys(S.quiz.best).forEach(function(k){ any = true; b = Math.max(b, S.quiz.best[k].pct); }); return any ? b : null; }
 function optChips(name, list, cur){
   return '<div class="opts">' + list.map(function(o){ return '<label class="opt"><input type="radio" name="' + name + '" value="' + o[0] + '"' + (o[0] === cur ? " checked" : "") + '><span>' + o[1] + '</span></label>'; }).join("") + '</div>';
 }
 function renderSetup(){
+  var weak = weakCards().length;
+  if (QS.src === "weak" && !weak) QS.src = "starter";
   $("#quizTitle").textContent = "Quiz";
   var bests = Object.keys(S.quiz.best).map(function(k){ return S.quiz.best[k]; }).sort(function(a, b){ return b.pct - a.pct; });
   var hist = S.quiz.hist.slice(0, 5);
   $("#quizBody").innerHTML =
     '<form class="card" id="quizForm">' +
-    '<fieldset><legend>Which quiz?</legend>' + optChips("src", [["starter", "Starter quiz (10 questions)"], ["build", "New quiz from the flashcards"]], QS.src) + '</fieldset>' +
-    '<fieldset data-build><legend>Topic</legend>' + optChips("topic", TOPICS.map(function(t){ return [t[0], t[1] + " (" + poolFor(t[0]).length + ")"]; }), QS.topic) + '</fieldset>' +
-    '<fieldset data-build><legend>Length</legend>' + optChips("len", [["10", "10 questions"], ["20", "20 questions"], ["all", "All of them"]], QS.len) + '</fieldset>' +
+    '<fieldset><legend>Which quiz?</legend>' + optChips("src", [["starter", "Starter quiz (10 questions)"], ["build", "New quiz from the flashcards"], ["top50", "Top 50 drill: maker, origin, body"], ["weak", "My weak spots (" + weak + ")"]], QS.src) +
+      '<p class="muted small" style="margin:8px 0 0">Weak spots are the flashcards you\'ve missed lately, in the cards or in a quiz.</p></fieldset>' +
+    '<fieldset data-for="build"><legend>Topic</legend>' + optChips("topic", TOPICS.map(function(t){ return [t[0], t[1] + " (" + poolFor(t[0]).length + ")"]; }), QS.topic) + '</fieldset>' +
+    '<fieldset data-for="build top50"><legend>Length</legend>' + optChips("len", [["10", "10 questions"], ["20", "20 questions"], ["all", "All of them"]], QS.len) + '</fieldset>' +
     '<fieldset><legend>Timing</legend>' + optChips("timed", [["0", "Untimed"], ["1", "Timed (" + QSEC + " seconds a question)"]], QS.timed) + '</fieldset>' +
     '<button class="btn" type="submit">Start quiz</button></form>' +
     '<div class="card"><h2>High scores</h2>' + (bests.length ?
@@ -1805,17 +1896,26 @@ function renderSetup(){
       bests.map(function(b){ return '<tr><th scope="row">' + esc(b.label) + '</th><td class="nowrap">' + b.pct + '% (' + b.score + '/' + b.total + ')</td><td class="nowrap">' + niceDate(b.date) + '</td></tr>'; }).join("") + '</tbody></table></div>' +
       '<h3>Recent</h3><ul>' + hist.map(function(h){ return '<li>' + niceDate(h.date) + ': ' + esc(h.label) + ', ' + h.score + '/' + h.total + ' (' + h.pct + '%)</li>'; }).join("") + '</ul>'
       : '<p class="muted">No scores yet. Your best score for each kind of quiz is saved here.</p>') + '</div>';
+  var w = $('#quizForm input[value="weak"]'); w.disabled = !weak; if (!weak) w.parentNode.style.opacity = ".45";
   syncSetup();
 }
-function syncSetup(){ var f = $("#quizForm"); if (!f) return; var build = f.elements.src.value === "build"; $$("[data-build]", f).forEach(function(fs){ fs.disabled = !build; fs.style.opacity = build ? "" : ".45"; }); }
+function syncSetup(){
+  var f = $("#quizForm"); if (!f) return; var src = f.elements.src.value;
+  $$("[data-for]", f).forEach(function(fs){ var on = fs.getAttribute("data-for").split(" ").indexOf(src) > -1; fs.disabled = !on; fs.style.opacity = on ? "" : ".45"; });
+}
 function startQuiz(){
   var items, label, key, timed = QS.timed === "1";
   if (QS.src === "starter"){ items = STARTER_QUIZ.map(prep); label = "Starter quiz"; key = "starter"; }
+  else if (QS.src === "top50"){
+    var tp = shuffle(t50Cards()), tn = QS.len === "all" ? tp.length : Math.min(+QS.len, tp.length);
+    items = tp.slice(0, tn).map(prep); label = "Top 50 drill, " + plural(tn, "question"); key = "top50|" + QS.len;
+  }
+  else if (QS.src === "weak"){ items = weakCards().slice(0, 20).map(prep); label = "My weak spots"; key = null; }
   else {
     var pool = shuffle(poolFor(QS.topic)), n = QS.len === "all" ? pool.length : Math.min(+QS.len, pool.length);
     items = pool.slice(0, n).map(prep); label = TOPIC_NAME[QS.topic] + ", " + plural(n, "question"); key = QS.topic + "|" + QS.len;
   }
-  Q = {items:items, i:0, score:0, missed:[], hints:0, timed:timed, label:label + (timed ? ", timed" : ""), key:key + (timed ? "|t" : ""), start:Date.now(), answered:false, done:false};
+  Q = {items:items, i:0, score:0, missed:[], hints:0, timed:timed, label:label + (timed ? ", timed" : ""), key:key ? key + (timed ? "|t" : "") : null, start:Date.now(), answered:false, done:false};
   renderQ();
 }
 function renderQ(){
@@ -1846,6 +1946,7 @@ function answer(i){
   Q.answered = true; stopTimer();
   var it = Q.items[Q.i], ok = i === it.ans;
   if (ok) Q.score++; else Q.missed.push({it:it, chosen:i});
+  if (it.id){ noteMiss(it.id, !ok); save(); }
   $$("#quizBody .q-opt").forEach(function(b, k){ b.disabled = true; if (k === it.ans) b.classList.add("right"); else if (k === i) b.classList.add("wrong"); });
   $("#qFb").innerHTML = '<div class="q-fb ' + (ok ? "ok" : "no") + '"><b>' + (ok ? "Correct." : i < 0 ? "Time's up. The answer is: " + esc(it.opts[it.ans]) : "Not quite. The answer is: " + esc(it.opts[it.ans])) + '</b>' + esc(it.e) + '</div>';
   $("#qHint").hidden = true;
@@ -1887,6 +1988,418 @@ function renderResults(){
       '<ol class="missed">' + Q.missed.map(function(x){
         return '<li><strong>' + esc(x.it.q) + '</strong><div class="yours">Your answer: ' + (x.chosen < 0 ? "ran out of time" : esc(x.it.opts[x.chosen])) + '</div><div class="right-a">Correct answer: ' + esc(x.it.opts[x.it.ans]) + '</div><div class="muted small" style="margin-top:4px">' + esc(x.it.e) + '</div></li>';
       }).join("") + '</ol>' : '<p class="muted">A clean sheet. Try a longer quiz or the timed mode.</p>') + '</div>';
+}
+
+/* ---------- Practice: more ways to study, built from the guide's own tables and lists ---------- */
+function plain(html){ var d = document.createElement("div"); d.innerHTML = html; return d.textContent; }
+function cap1(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+function low1(s){ return s.charAt(0).toLowerCase() + s.slice(1); }
+function dot(s){ return /[.!?]$/.test(s) ? s : s + "."; }
+function fmtSecs(s){ return Math.floor(s / 60) + ":" + ("0" + s % 60).slice(-2); }
+function gTable(cap){
+  var rows = [];
+  GUIDE.forEach(function(s){ s.blocks.forEach(function(b){ if (b.t && b.t.cap === cap) rows = b.t.rows; }); });
+  return rows.map(function(r){ return r.map(plain); });
+}
+function gList(id, kind, n){ return (GUIDE_BY[id].blocks.filter(function(b){ return b[kind]; })[n || 0] || {})[kind] || []; }
+function bolds(list){ /* "<strong>Term:</strong> meaning" lines become [term, meaning] */
+  return list.map(function(x){ var m = /^<strong>(.+?)[:.]?<\/strong>\s*(.+)$/.exec(x); return m ? [plain(m[1]), cap1(plain(m[2]))] : null; }).filter(Boolean);
+}
+var G_GLOSS = gTable("Glossary");
+var SIZES = gTable("Common sizes").map(function(r){
+  var m = /^(\d+)([½⅛]?) × (\d+)/.exec(r[1]);
+  return m ? {name:r[0], dims:r[1], time:r[2], len:+m[1] + (m[2] === "½" ? .5 : m[2] === "⅛" ? .125 : 0), ring:+m[3]} : null;
+}).filter(Boolean);
+
+/* Name-and-meaning sets, used by Match and (where type is set) by Type it. */
+var PSETS = [
+  {id:"wrappers", name:"Wrapper types", type:1, pairs:gTable("Wrapper types")},
+  {id:"wrappers2", name:"More wrappers and binders", pairs:gTable("More wrappers and binders").map(function(r){ return [r[0], dot(r[1]) + " " + dot(r[2])]; })},
+  {id:"shapes", name:"Shapes", type:1, pairs:gTable("Cigar shapes").map(function(r){ return [r[0], r[1] + ": " + low1(r[2])]; })},
+  {id:"sizes", name:"Common sizes", type:1, pairs:SIZES.map(function(s){ return [s.name, s.dims + ", " + s.time]; })},
+  {id:"leaf", name:"Parts of a cigar and the leaf", type:1, pairs:bolds(gList("basics", "ul")).slice(0, 3).concat(bolds(gList("origins", "ul", 0)), bolds(gList("origins", "ul", 1)))},
+  {id:"origins", name:"Countries of origin", type:1, pairs:COUNTRIES.map(function(r){ return [r[0], dot(r[1]) + " " + dot(r[2])]; })},
+  {id:"brands", name:"Brand stories", type:1, pairs:STORIES.map(function(r){ return [r[0], r[2]]; })},
+  {id:"makers", name:"Top 50: who makes it", wide:1, pairs:TOP50.map(function(c){ return [c.name, c.maker]; })},
+  {id:"flavor", name:"Flavor families", pairs:gTable("Flavor families").map(function(r){ return [r[0], r[1]]; })},
+  {id:"fixes", name:"Cuts and common fixes", pairs:gTable("Types of cut").map(function(r){ return [r[0], dot(r[1]) + " Best for: " + dot(low1(r[2]))]; }).concat(gTable("Fixing common problems").map(function(r){ return [r[0], r[2]]; }))},
+  {id:"humidor", name:"Humidor readings and problems", pairs:gTable("Humidity readings").concat(gTable("Humidor problems")).map(function(r){ return [r[0], r[1]]; })},
+  {id:"pairings", name:"Pairings by cigar body", pairs:PAIRS},
+  {id:"glossary", name:"Glossary", type:1, pairs:G_GLOSS}
+];
+/* What a customer says, and the guide's answer. */
+var SAY = [
+  {id:"faq", name:"Customer questions", lead:"A customer says:", quote:1, rows:gTable("Questions about cigars").concat(gTable("Questions about smoking"),
+    GUIDE_BY.questions.blocks.map(function(b){ var m = typeof b === "string" && /^<strong>If they say “(.+?)”:<\/strong>\s*(.+)$/.exec(b); return m ? [m[1], cap1(plain(m[2]))] : null; }).filter(Boolean))},
+  {id:"tough", name:"Tough situations", lead:"What do you do?", mgr:"Refunds, swaps, discounts, and cutting someone off all follow the shop's policy. Learn it from your manager.", rows:gTable("Tough situations")}
+];
+SAY.forEach(function(d){ d.items = d.rows.map(function(r, i){ return {id:d.id + i, q:r[0], a:r[1]}; }); });
+/* Things with a right order: [what to tap, a note shown once it's placed]. */
+function spread(list, val, n){ /* n random items with different values, low to high */
+  var seen = {}, out = [];
+  shuffle(list).forEach(function(x){ if (!seen[val(x)]){ seen[val(x)] = 1; out.push(x); } });
+  return shuffle(out).slice(0, n).sort(function(a, b){ return val(a) - val(b); });
+}
+var ORDERS = [
+  {id:"host", name:"Your job in the lounge", ask:"Part guide, part host. Tap the steps in the order you do them.", items:[["Greet quickly"], ["Ask a couple of questions"], ["Recommend one or two cigars"], ["Handle the cut and light if they want it"], ["Check in once"]]},
+  {id:"light", name:"Lighting a cigar", ask:"Tap the steps in order.", items:gList("knowhow", "ol").map(function(t){ return [plain(t)]; })},
+  {id:"rule", name:"The rule for every tough situation", ask:"Tap the four steps in order.", items:[["Listen"], ["Repeat back what you heard"], ["Offer one clear next step"], ["Follow through"]]},
+  {id:"leaf", name:"Leaf position on the plant", ask:"Tap the leaves from the bottom of the plant to the top.", items:bolds(gList("origins", "ul", 0))},
+  {id:"thirds", name:"The three thirds", ask:"Tap what the smoker gets, from the first third to the final third.", items:bolds(gList("flavor", "ol")).map(function(r){ return [r[1], r[0]]; })},
+  {id:"body", name:"Body, mildest to fullest", ask:"Tap these cigars from the mildest to the fullest.", gen:function(){ return spread(TOP50, function(c){ return BODY_NUM[c.body]; }, 5).map(function(c){ return [c.name, c.body]; }); }},
+  {id:"length", name:"Sizes, shortest to longest", ask:"Tap the sizes from the shortest to the longest.", gen:function(){ return spread(SIZES, function(s){ return s.len; }, 5).map(function(s){ return [s.name, s.dims]; }); }},
+  {id:"ring", name:"Ring gauge, thinnest to thickest", ask:"Tap the sizes from the thinnest to the thickest.", gen:function(){ return spread(SIZES, function(s){ return s.ring; }, 5).map(function(s){ return [s.name, s.dims]; }); }}
+];
+/* Read-aloud sets: [what's said first, what's said after the pause]. */
+var LISTEN = DECKS.map(function(d){ return {id:d.id, name:"Flashcards: " + d.name, items:d.cards.map(function(c){ return [c.q, c.o[0] + ". " + c.e]; })}; })
+  .concat(SAY.map(function(d){ return {id:d.id, name:d.name, items:d.items.map(function(x){ return [x.q, x.a]; })}; }), [{id:"glossary", name:"Glossary", items:G_GLOSS}]);
+
+var MODES = [
+  ["match", "Match", "link", "Tap a name, then tap what goes with it. Six pairs against the clock."],
+  ["type", "Type it", "pen", "Read the description and type the name from memory. Close spelling counts."],
+  ["say", "Say it out loud", "users", "Read what the customer says, answer out loud, then check yourself against the guide."],
+  ["order", "Put it in order", "list", "Tap steps, sizes, and cigars into the right order."],
+  ["listen", "Listen", "sound", "Hear a question, get a few seconds to think, then hear the answer. Hands-free review."]
+], MODE_BY = {};
+MODES.forEach(function(m){ MODE_BY[m[0]] = m; });
+var P = null, PMODE = "", pTimer = null, wakeLock = null, wakeBusy = false;
+
+function pracSets(mode){ return mode === "match" ? PSETS : mode === "type" ? PSETS.filter(function(s){ return s.type; }) : mode === "say" ? SAY : mode === "order" ? ORDERS : LISTEN; }
+function sayLv(id){ return S.practice.say[id] || 0; }
+function sayNailed(d){ return d.items.filter(function(x){ return sayLv(x.id) > 0; }).length; }
+function pracBadge(mode, s){
+  var pr = S.practice, b = pr[mode] && pr[mode][s.id];
+  if (mode === "match") return b ? "Best " + fmtSecs(b) : plural(Math.min(6, s.pairs.length), "pair");
+  if (mode === "type") return b !== undefined ? "Best " + b + "%" : plural(s.pairs.length, "name");
+  if (mode === "say") return sayNailed(s) + " of " + s.items.length + " nailed";
+  if (mode === "order") return b === 0 ? "Perfect" : b !== undefined ? "Best: " + plural(b, "wrong tap") : "Not tried yet";
+  return plural(s.items.length, "card");
+}
+function pracProgress(mode){
+  var pr = S.practice, sets = pracSets(mode);
+  function count(f){ return sets.filter(f).length + " of " + sets.length; }
+  if (mode === "match") return count(function(s){ return pr.match[s.id]; }) + " sets played";
+  if (mode === "type") return count(function(s){ return pr.type[s.id] === 100; }) + " sets at 100%";
+  if (mode === "say") return SAY.reduce(function(n, d){ return n + sayNailed(d); }, 0) + " of " + SAY.reduce(function(n, d){ return n + d.items.length; }, 0) + " answers nailed";
+  if (mode === "order") return count(function(s){ return pr.order[s.id] === 0; }) + " perfect";
+  return "";
+}
+function renderPractice(){
+  $("#pracTitle").textContent = "Practice";
+  $("#pracBody").innerHTML = '<p class="lede">Five more ways to make it stick. Everything here comes straight from the study guide.</p><div class="grid two">' +
+    MODES.map(function(m){
+      var pg = pracProgress(m[0]);
+      return '<a class="card mode" href="#/practice/' + m[0] + '">' + icon(m[2]) + '<div><h2>' + m[1] + '</h2><p class="muted">' + m[3] + '</p>' + (pg ? '<p class="small" style="margin-top:.6em"><span class="chip">' + pg + '</span></p>' : '') + '</div></a>';
+    }).join("") + '</div>' +
+    '<p class="muted small" style="margin-top:16px">Also here: <a href="#/cards">Flashcards</a> with answers you can tap, and the <a href="#/quiz">Quiz</a>, which now has a Top 50 drill and a quiz made from the cards you miss.</p>';
+}
+function pracPicker(mode){
+  var m = MODE_BY[mode];
+  $("#pracTitle").textContent = m[1];
+  $("#pracBody").innerHTML = '<a class="g-back" style="display:inline-flex" href="#/practice">← All practice</a><p class="lede">' + m[3] + '</p>' +
+    (mode === "listen" && !canSpeak() ? '<div class="empty">This browser can\'t read aloud. Try it in Safari or Chrome.</div>' :
+    '<div class="setlist p-stage" style="margin-left:0">' + pracSets(mode).map(function(s){
+      return '<button class="setbtn" type="button" data-pset="' + s.id + '"><span>' + esc(s.name) + '</span><small>' + pracBadge(mode, s) + '</small></button>';
+    }).join("") + '</div>');
+}
+function pracStart(mode, id){
+  var set = pracSets(mode).filter(function(s){ return s.id === id; })[0]; if (!set) return;
+  pStop();
+  ({match:startMatch, type:startType, say:startSay, order:startOrder, listen:startListen})[mode](set);
+  pracFocus();
+}
+function pracFocus(){ window.scrollTo(0, 0); var h = $("#typeIn") || $("#pHead") || $("#pracTitle"); if (h) h.focus({preventScroll:true}); }
+function pStop(){ if (pTimer){ clearInterval(pTimer); pTimer = null; } lsStop(); }
+function pBack(){ return '<button class="linkbtn" type="button" data-p="sets">← ' + (PMODE === "say" ? "All decks" : PMODE === "order" ? "All lists" : "All sets") + '</button>'; }
+function pEnd(again){
+  return '<div class="row" style="justify-content:center"><button class="btn" type="button" data-p="again">' + again + '</button><button class="btn ghost" type="button" data-p="sets">Pick another</button><a class="btn ghost" href="#/practice">All practice</a></div>';
+}
+
+/* Match */
+function startMatch(set){
+  var k = {}, d = {}, pairs = [];
+  shuffle(set.pairs).forEach(function(p){ if (pairs.length < 6 && !k[p[0]] && !d[p[1]]){ k[p[0]] = d[p[1]] = 1; pairs.push(p); } });
+  var idx = pairs.map(function(_, i){ return i; });
+  P = {mode:"match", set:set, pairs:pairs, L:shuffle(idx), R:shuffle(idx), sel:null, n:0, misses:0, start:0};
+  function tile(side, i){ return '<button class="tile' + (side === "L" ? " term" : "") + '" type="button" data-m="' + side + i + '">' + esc(pairs[i][side === "L" ? 0 : 1]) + '</button>'; }
+  $("#pracTitle").textContent = set.name;
+  $("#pracBody").innerHTML = '<div class="p-stage"><div class="spread">' + pBack() + '<span class="chip amber" id="mTime" aria-hidden="true">0:00</span></div>' +
+    '<p class="muted small" style="margin:.5em 0 .9em">Tap a name, then tap what goes with it. The clock starts on your first tap.</p>' +
+    '<div class="match' + (set.wide ? " wide-l" : "") + '">' + idx.map(function(i){ return tile("L", P.L[i]) + tile("R", P.R[i]); }).join("") + '</div>' +
+    '<div class="sr" role="status" aria-live="polite" id="pLive"></div></div>';
+}
+function tapMatch(el){
+  if (!P || P.mode !== "match" || el.classList.contains("ok")) return;
+  var id = el.getAttribute("data-m"), side = id.charAt(0), i = +id.slice(1), sel = P.sel, p = P;
+  if (!P.start){
+    P.start = Date.now();
+    pTimer = setInterval(function(){ var t = $("#mTime"); if (t && P === p) t.textContent = fmtSecs(Math.round((Date.now() - p.start) / 1000)); }, 500);
+  }
+  if (sel) sel.el.classList.remove("sel");
+  if (!sel || sel.side === side){
+    P.sel = sel && sel.el === el ? null : {side:side, i:i, el:el};
+    if (P.sel) el.classList.add("sel");
+    return;
+  }
+  P.sel = null;
+  var both = [el, sel.el];
+  if (sel.i === i){
+    both.forEach(function(b){ b.classList.add("ok"); b.setAttribute("aria-disabled", "true"); });
+    $("#pLive").textContent = "Match: " + P.pairs[i][0] + ".";
+    if (++P.n === P.pairs.length) finishMatch();
+  } else {
+    P.misses++;
+    both.forEach(function(b){ b.classList.add("bad"); });
+    $("#pLive").textContent = "Not a match.";
+    setTimeout(function(){ both.forEach(function(b){ b.classList.remove("bad"); }); }, 420);
+  }
+}
+function finishMatch(){
+  clearInterval(pTimer); pTimer = null;
+  var p = P, secs = Math.max(1, Math.round((Date.now() - p.start) / 1000)), old = S.practice.match[p.set.id], best = !old || secs < old;
+  if (best){ S.practice.match[p.set.id] = secs; save(); }
+  $("#mTime").textContent = fmtSecs(secs);
+  setTimeout(function(){
+    if (P !== p || $("#v-practice").hidden) return;
+    $("#pracBody").innerHTML = '<div class="p-stage"><div class="card" style="text-align:center"><p class="kicker">' + esc(p.set.name) + '</p>' +
+      '<p class="score-big" id="pHead" tabindex="-1">' + fmtSecs(secs) + '</p><p class="muted small" style="margin:.7em 0 1em">' + (p.misses ? plural(p.misses, "wrong tap") : "No wrong taps") + (old && !best ? " · Your best is " + fmtSecs(old) : "") + '</p>' +
+      (old && best ? '<p><span class="chip amber">New best time</span></p>' : '') + pEnd("Play again") + '</div>' +
+      '<div class="card"><h2>What you matched</h2>' + tableHTML({cap:"Matched pairs", cls:"narrow", head:["Name", "Goes with"], rows:p.pairs.map(function(r){ return [esc(r[0]), esc(r[1])]; })}) + '</div></div>';
+    pracFocus();
+  }, 500);
+}
+
+/* Type it */
+var ALT = {"Arturo Fuente":["Fuente"], "Dominican Republic":["Dominican", "DR"], "Altadis USA":["Altadis"], "General Cigar":["General"]};
+function tkey(s){ return norm(s).replace(/\band\b/g, " ").replace(/[^a-z0-9]/g, ""); }
+function answers(term){ return [term].concat(ALT[term] || [], term.split(/[\/()]/).map(function(x){ return x.trim(); }).filter(Boolean)); }
+function lev(a, b){
+  var row = [], i, j, prev, tmp;
+  for (j = 0; j <= b.length; j++) row[j] = j;
+  for (i = 1; i <= a.length; i++){
+    prev = row[0]; row[0] = i;
+    for (j = 1; j <= b.length; j++){ tmp = row[j]; row[j] = Math.min(row[j] + 1, row[j - 1] + 1, prev + (a.charAt(i - 1) === b.charAt(j - 1) ? 0 : 1)); prev = tmp; }
+  }
+  return row[b.length];
+}
+function judge(typed, term){ /* "exact", "close" (a letter or two off), or null */
+  var t = tkey(typed), res = null;
+  answers(term).forEach(function(a){
+    var k = tkey(a); if (!k) return;
+    if (t === k) res = "exact"; else if (!res && lev(t, k) <= (k.length >= 8 ? 2 : k.length >= 5 ? 1 : 0)) res = "close";
+  });
+  return res;
+}
+function maskDef(p){ /* don't let the description give the name away */
+  var d = p[1];
+  answers(p[0]).forEach(function(a){ if (a.length > 2) d = d.replace(new RegExp("\\b" + a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\w*", "gi"), "_____"); });
+  return d;
+}
+function startType(set){
+  P = {mode:"type", set:set, queue:shuffle(set.pairs.map(function(_, i){ return i; })), total:set.pairs.length, first:0, tries:{}, res:null};
+  renderType();
+}
+function renderType(){
+  var p = P.set.pairs[P.queue[0]];
+  P.res = null;
+  $("#pracBody").innerHTML = '<div class="p-stage"><div class="spread">' + pBack() + '<span class="chip">' + P.queue.length + ' to go</span></div>' +
+    '<form class="card" id="typeForm" autocomplete="off" style="margin-top:10px"><p class="kicker">' + esc(P.set.name) + '</p><p class="fc-q">' + esc(maskDef(p)) + '</p>' +
+    '<label class="f"><span>Type the name</span><input type="text" id="typeIn" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" maxlength="60"></label>' +
+    '<div id="typeFb" role="status" aria-live="polite"></div>' +
+    '<div class="row"><button class="btn" type="submit" id="typeGo">Check</button><button class="btn ghost" type="button" data-ty="skip" id="typeSkip">I don\'t know</button></div></form></div>';
+}
+function typeFb(ok, lead, p, extra){ $("#typeFb").innerHTML = '<div class="q-fb ' + (ok ? "ok" : "no") + '"><b>' + lead + '</b>' + esc(p[1]) + '</div>' + (extra || ""); }
+function checkType(skip){
+  if (!P || P.mode !== "type") return;
+  if (P.res){ nextType(); return; }
+  var inp = $("#typeIn"), p = P.set.pairs[P.queue[0]], v = inp.value.trim();
+  if (!v && !skip){ inp.focus(); return; }
+  var j = skip ? null : judge(v, p[0]);
+  P.res = j ? "right" : "wrong";
+  inp.readOnly = true;
+  typeFb(j, j === "exact" ? "Correct: " + esc(p[0]) : j ? "Close enough. It's spelled: " + esc(p[0]) : "The answer is: " + esc(p[0]), p,
+    !j && !skip ? '<p class="small"><button class="linkbtn" type="button" data-ty="override">I had it right</button></p>' : '');
+  $("#typeGo").textContent = P.queue.length > 1 ? "Next" : "See my score"; $("#typeSkip").hidden = true;
+  if (skip) $("#typeGo").focus();
+}
+function nextType(){
+  var i = P.queue.shift(), t = P.tries[i] || 0;
+  if (P.res === "right"){ if (!t) P.first++; }
+  else { P.tries[i] = t + 1; if (!t && P.queue.length) P.queue.push(i); }
+  if (P.queue.length){ renderType(); $("#typeIn").focus(); return; }
+  var set = P.set, pct = Math.round(P.first / P.total * 100), old = S.practice.type[set.id], again = Object.keys(P.tries).map(function(k){ return set.pairs[k]; });
+  if (old === undefined || pct > old){ S.practice.type[set.id] = pct; save(); }
+  $("#pracBody").innerHTML = '<div class="p-stage"><div class="card" style="text-align:center"><p class="kicker">' + esc(set.name) + '</p>' +
+    '<p class="score-big" id="pHead" tabindex="-1">' + P.first + ' / ' + P.total + '</p><p class="muted small" style="margin:.7em 0 1em">right on the first try (' + pct + '%)' + (old !== undefined && old >= pct ? " · Your best is " + old + "%" : "") + '</p>' +
+    (old !== undefined && pct > old ? '<p><span class="chip amber">New best score</span></p>' : '') + pEnd("Go again") + '</div>' +
+    (again.length ? '<div class="card"><h2>Look at these again</h2>' + tableHTML({cap:"Names to review", cls:"narrow", head:["Name", "Description"], rows:again.map(function(r){ return [esc(r[0]), esc(r[1])]; })}) + '</div>' : '') + '</div>';
+  pracFocus();
+}
+
+/* Say it out loud */
+function startSay(deck){
+  P = {mode:"say", set:deck, queue:shuffle(deck.items).sort(function(a, b){ return sayLv(a.id) - sayLv(b.id); }), shown:false};
+  renderSay();
+}
+function renderSay(){
+  var d = P.set, it = P.queue[0], n = sayNailed(d);
+  var head = '<div class="p-stage"><div class="spread">' + pBack() + '<span class="muted small">' + (it ? P.queue.length + " left this round" : "") + '</span></div>' +
+    '<div class="bar" role="progressbar" aria-label="Answers nailed in this deck" aria-valuemin="0" aria-valuemax="' + d.items.length + '" aria-valuenow="' + n + '"><i style="width:' + Math.round(n / d.items.length * 100) + '%"></i></div>' +
+    '<p class="small muted" style="margin:.5em 0 1em">' + n + ' of ' + d.items.length + ' nailed</p>';
+  if (!it){
+    $("#pracBody").innerHTML = head + '<div class="card" style="text-align:center"><h2 tabindex="-1" id="pHead">That\'s the round.</h2><p class="muted">Anything you marked “Needs work” came back until you had it.</p>' + pEnd("Go again") + '</div></div>';
+    return;
+  }
+  $("#pracBody").innerHTML = head + '<div class="card"><p class="kicker">' + d.lead + '</p><p class="fc-q" id="pHead" tabindex="-1">' + (d.quote ? "“" + esc(it.q) + "”" : esc(it.q)) + '</p>' +
+    (P.shown ? '<div class="q-fb"><b>The guide\'s answer</b>' + esc(it.a) + '</div>' + (d.mgr ? mgr(d.mgr) : '') +
+      '<div class="fc-actions"><button class="btn again" type="button" data-say="again">Needs work</button><button class="btn gotit" type="button" data-say="got">Nailed it</button></div>' :
+      '<p class="muted">Say your answer out loud, the way you would on the floor. Then check it.</p><button class="btn block" type="button" data-say="show">Show the guide\'s answer</button>') +
+    '</div></div>';
+}
+function tapSay(act){
+  if (!P || P.mode !== "say" || !P.queue.length) return;
+  if (act === "show"){ P.shown = true; renderSay(); return; }
+  var it = P.queue.shift();
+  if (act === "got") S.practice.say[it.id] = Math.min(sayLv(it.id) + 1, 2);
+  else { delete S.practice.say[it.id]; P.queue.splice(Math.min(3, P.queue.length), 0, it); }
+  save(); P.shown = false; renderSay(); pracFocus();
+}
+
+/* Put it in order */
+function startOrder(o){
+  var items = o.gen ? o.gen() : o.items, idx = items.map(function(_, i){ return i; }), pool = shuffle(idx);
+  while (items.length > 1 && pool.every(function(v, i){ return v === i; })) pool = shuffle(idx);
+  P = {mode:"order", set:o, items:items, pool:pool, next:0, misses:0};
+  renderOrder();
+}
+function orderTaps(){ return P.misses ? plural(P.misses, "wrong tap") : "No wrong taps"; }
+function renderOrder(){
+  var o = P.set, done = P.next === P.items.length, after = ORDERS[(ORDERS.indexOf(o) + 1) % ORDERS.length];
+  $("#pracTitle").textContent = o.name;
+  $("#pracBody").innerHTML = '<div class="p-stage"><div class="spread">' + pBack() + '<span class="chip" id="oTaps">' + orderTaps() + '</span></div>' +
+    '<p class="muted" style="margin:.5em 0 .9em">' + o.ask + '</p>' +
+    (P.next ? '<ol class="ord-done">' + P.items.slice(0, P.next).map(function(it, i){
+      return '<li class="q-opt right"><span class="k" aria-hidden="true">' + (i + 1) + '</span><span>' + esc(it[0]) + (it[1] ? '<small>' + esc(it[1]) + '</small>' : '') + '</span></li>';
+    }).join("") + '</ol>' : '') +
+    (done ? '<div class="card" style="text-align:center"><h2 style="margin-bottom:.6em">' + (P.misses ? "Done, with " + plural(P.misses, "wrong tap") + "." : "Perfect.") + '</h2>' +
+        '<div class="row" style="justify-content:center"><button class="btn" type="button" data-pset="' + after.id + '">Next: ' + esc(after.name) + '</button><button class="btn ghost" type="button" data-p="again">' + (o.gen ? "New set" : "Go again") + '</button><a class="btn ghost" href="#/practice">All practice</a></div></div>' :
+      '<div class="q-opts" style="margin-top:0">' + P.pool.filter(function(i){ return i >= P.next; }).map(function(i){
+        return '<button class="q-opt" type="button" data-o="' + i + '"><span>' + esc(P.items[i][0]) + '</span></button>';
+      }).join("") + '</div>') +
+    '<div class="sr" role="status" aria-live="polite" id="pLive"></div></div>';
+}
+function tapOrder(el){
+  if (!P || P.mode !== "order") return;
+  if (+el.getAttribute("data-o") !== P.next){
+    P.misses++; $("#oTaps").textContent = orderTaps(); $("#pLive").textContent = "Not that one yet.";
+    el.classList.remove("nope"); void el.offsetWidth; el.classList.add("nope");
+    setTimeout(function(){ el.classList.remove("nope"); }, 450);
+    return;
+  }
+  P.next++;
+  if (P.next === P.items.length){
+    var old = S.practice.order[P.set.id];
+    if (old === undefined || P.misses < old){ S.practice.order[P.set.id] = P.misses; save(); }
+  }
+  renderOrder();
+  var first = $("#pracBody .q-opts .q-opt"); if (first) first.focus({preventScroll:true});
+}
+
+/* Listen */
+function canSpeak(){ return "speechSynthesis" in window && typeof window.SpeechSynthesisUtterance === "function"; }
+function speakable(s){
+  return s.replace(/(\d)\s*[–-]\s*(\d)/g, "$1 to $2").replace(/\s×\s/g, " by ").replace(/½/g, " and a half").replace(/⅛/g, " and an eighth")
+    .replace(/°F/g, " degrees").replace(/~/g, "about ").replace(/\s\/\s/g, ", ").replace(/[“”]/g, '"');
+}
+function wake(on){ /* keep the screen on while the voice is playing, where the browser allows it */
+  try {
+    if (!on){ if (wakeLock){ wakeLock.release(); wakeLock = null; } return; }
+    if (wakeLock || wakeBusy || !navigator.wakeLock) return;
+    wakeBusy = true;
+    navigator.wakeLock.request("screen").then(function(l){ wakeBusy = false; if (P && P.mode === "listen" && P.playing) wakeLock = l; else l.release(); }, function(){ wakeBusy = false; });
+  } catch (e){ wakeBusy = false; }
+}
+function lsItems(set){ return S.listen.mix === "1" ? shuffle(set.items) : set.items; }
+function startListen(set){
+  P = {mode:"listen", set:set, items:lsItems(set), i:0, phase:"q", playing:false, tok:0, timer:null, cut:0};
+  $("#pracBody").innerHTML = '<div class="p-stage"><div class="spread">' + pBack() + '<span class="chip" id="lsCount"></span></div>' +
+    '<div class="card" style="margin-top:10px"><p class="kicker">' + esc(set.name) + '</p><p class="fc-q" id="lsQ"></p><p class="ls-a" id="lsA"></p>' +
+    '<div class="ls-ctl"><button class="btn quiet" type="button" data-l="prev">Back</button><button class="btn" type="button" data-l="play" id="lsPlay">Play</button><button class="btn quiet" type="button" data-l="next">Next</button></div></div>' +
+    '<form class="card" id="lsForm"><fieldset><legend>Time to think</legend>' + optChips("gap", [["2", "2 seconds"], ["4", "4 seconds"], ["7", "7 seconds"]], S.listen.gap) + '</fieldset>' +
+    '<fieldset><legend>Voice speed</legend>' + optChips("rate", [[".85", "Slower"], ["1", "Normal"], ["1.2", "Faster"]], S.listen.rate) + '</fieldset>' +
+    '<fieldset style="margin-bottom:0"><legend>Order</legend>' + optChips("mix", [["0", "In order"], ["1", "Shuffled"]], S.listen.mix) + '</fieldset></form>' +
+    '<p class="muted small" style="margin-top:12px">Keep this page open and the screen on while it plays. Locking the phone or switching apps stops the voice.</p></div>';
+  lsPaint();
+}
+function lsPaint(){
+  if (!$("#lsQ")) return;
+  var it = P.items[P.i], showA = !P.playing || P.phase === "a", a = $("#lsA");
+  $("#lsCount").textContent = (P.i + 1) + " of " + P.items.length;
+  $("#lsQ").textContent = it[0];
+  a.textContent = showA ? it[1] : "Think about it…"; a.classList.toggle("muted", !showA);
+  $("#lsPlay").textContent = P.playing ? "Pause" : P.phase === "end" ? "Play again" : "Play";
+}
+function lsStop(){
+  if (!P || P.mode !== "listen") return;
+  P.tok++; P.playing = false; clearTimeout(P.timer);
+  try { if (speechSynthesis.speaking || speechSynthesis.pending) P.cut = Date.now(); speechSynthesis.cancel(); } catch (e){}
+  wake(false);
+}
+function lsPlay(){
+  var p = P, tok = ++p.tok, it = p.items[p.i];
+  function alive(){ return P === p && p.tok === tok; }
+  function after(ms, fn){ p.timer = setTimeout(function(){ if (alive()) fn(); }, ms); }
+  function say(text, then){
+    var u = new SpeechSynthesisUtterance(speakable(text)), fired = false;
+    function end(){ if (!fired){ fired = true; if (alive()) then(); } }
+    u.lang = "en-US"; u.rate = +S.listen.rate || 1; u.onend = end; u.onerror = end;
+    p.u = u; /* hold on to it; some browsers drop the end event otherwise */
+    /* Safari can swallow a line spoken right after a cancel, so give it a beat */
+    if (Date.now() - p.cut < 200) after(220, function(){ speechSynthesis.speak(u); }); else speechSynthesis.speak(u);
+  }
+  p.playing = true; p.phase = "q"; lsPaint(); wake(true);
+  say(it[0], function(){
+    after(+S.listen.gap * 1000, function(){
+      p.phase = "a"; lsPaint();
+      say(it[1], function(){
+        after(900, function(){
+          if (p.i < p.items.length - 1){ p.i++; lsPlay(); }
+          else { p.playing = false; p.phase = "end"; lsPaint(); wake(false); }
+        });
+      });
+    });
+  });
+}
+function tapListen(act){
+  if (!P || P.mode !== "listen") return;
+  var was = P.playing;
+  if (act === "play"){
+    if (was){ lsStop(); lsPaint(); return; }
+    if (P.phase === "end") P.i = 0;
+    lsPlay(); return;
+  }
+  lsStop();
+  P.i = act === "next" ? (P.i + 1) % P.items.length : Math.max(0, P.i - 1); P.phase = "q";
+  if (was) lsPlay(); else lsPaint();
+}
+function pracClick(t){
+  var el;
+  if ((el = t.closest("[data-pset]"))){ pracStart(PMODE, el.getAttribute("data-pset")); return true; }
+  if ((el = t.closest("[data-p]"))){
+    pStop();
+    if (el.getAttribute("data-p") === "again" && P) pracStart(PMODE, P.set.id); else { P = null; pracPicker(PMODE); pracFocus(); }
+    return true;
+  }
+  if ((el = t.closest("[data-m]"))){ tapMatch(el); return true; }
+  if ((el = t.closest("[data-o]"))){ tapOrder(el); return true; }
+  if ((el = t.closest("[data-say]"))){ tapSay(el.getAttribute("data-say")); return true; }
+  if ((el = t.closest("[data-l]"))){ tapListen(el.getAttribute("data-l")); return true; }
+  if ((el = t.closest("[data-ty]"))){
+    if (el.getAttribute("data-ty") === "skip") checkType(true);
+    else if (P && P.mode === "type" && P.res === "wrong"){ P.res = "right"; typeFb(true, "Counted as right: " + esc(P.set.pairs[P.queue[0]][0]), P.set.pairs[P.queue[0]]); $("#typeGo").focus(); }
+    return true;
+  }
+  return false;
 }
 
 /* ---------- Trackers: humidor, regulars, tasting journal ---------- */
@@ -2102,6 +2615,12 @@ var VIEWS = {
     else renderSetup();
     return "Quiz";
   },
+  practice:function(arg){
+    var m = MODE_BY[arg];
+    P = null; PMODE = m ? arg : "";
+    if (m) pracPicker(arg); else renderPractice();
+    return m ? "Practice: " + m[1] : "Practice";
+  },
   checklists:function(){ return "Checklists"; },
   humidor:function(){ trackerShell("humidor"); renderRows("humidor"); return "Humidor Tracker"; },
   regulars:function(){ trackerShell("regulars"); renderRows("regulars"); return "Regulars Tracker"; },
@@ -2113,15 +2632,15 @@ function route(){
   if (location.hash && location.hash.indexOf("#/") !== 0) return; /* in-page anchors, e.g. the skip link */
   var parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean), page = parts[0] || "home", arg = parts[1] || "";
   if (!VIEWS[page]){ page = "home"; arg = ""; }
-  stopTimer(); hide(moreSheet); hide(dlg);
+  stopTimer(); pStop(); hide(moreSheet); hide(dlg);
   $$(".view").forEach(function(v){ v.hidden = v.id !== "v-" + page; });
-  var inTabs = ["home", "guide", "cards", "quiz"].indexOf(page) > -1;
+  var inTabs = ["home", "guide", "cards", "quiz", "practice"].indexOf(page) > -1;
   $$("[data-nav]").forEach(function(a){ if (a.getAttribute("data-nav") === page) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
   if (inTabs) $("#btnMore").removeAttribute("aria-current"); else $("#btnMore").setAttribute("aria-current", "page");
   focusEl = null;
   var label = VIEWS[page](arg);
   document.title = (label ? label + " · " : "") + "Cigar Lounge Mastery";
-  if (page !== "home" && page !== "search"){ S.last = {h:"#/" + page + (arg && (page === "guide" ? GUIDE_BY[arg] : deckBy(arg)) ? "/" + arg : ""), t:label}; save(); }
+  if (page !== "home" && page !== "search"){ S.last = {h:"#/" + page + (arg && (page === "guide" ? GUIDE_BY[arg] : page === "practice" ? MODE_BY[arg] : deckBy(arg)) ? "/" + arg : ""), t:label}; save(); }
   if (pendingFlash){
     var el = pendingFlash; pendingFlash = null;
     setTimeout(function(){ el.scrollIntoView({block:"center"}); el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); }, 60);
@@ -2184,6 +2703,9 @@ function wire(){
       return;
     }
     if ((el = t.closest("[data-hit]"))){ openHit(HITS[+el.getAttribute("data-hit")]); return; }
+    if ((el = t.closest("[data-pick]"))){ pickCard(+el.getAttribute("data-pick")); return; }
+    if (t.closest("[data-weakquiz]")){ QS.src = "weak"; return; }
+    if (!$("#v-practice").hidden && pracClick(t)) return;
     if ((el = t.closest("[data-fc]"))){
       var a = el.getAttribute("data-fc");
       if (a === "got") grade(true); else if (a === "again") grade(false); else if (a === "flip") flipCard();
@@ -2200,7 +2722,7 @@ function wire(){
       var qa = el.getAttribute("data-qa");
       if (qa === "new"){ Q = null; renderSetup(); }
       else if (qa === "again") startQuiz();
-      else if (qa === "missed"){ var items = Q.missed.map(function(x){ var it = x.it, order = shuffle([0, 1, 2, 3]); return {q:it.q, opts:order.map(function(i){ return it.opts[i]; }), ans:order.indexOf(it.ans), e:it.e, t:it.t}; }); Q = {items:items, i:0, score:0, missed:[], hints:0, timed:false, label:"Missed questions", key:null, start:Date.now(), answered:false, done:false}; renderQ(); }
+      else if (qa === "missed"){ var items = Q.missed.map(function(x){ var it = x.it, order = shuffle([0, 1, 2, 3]); return {id:it.id, q:it.q, opts:order.map(function(i){ return it.opts[i]; }), ans:order.indexOf(it.ans), e:it.e, t:it.t}; }); Q = {items:items, i:0, score:0, missed:[], hints:0, timed:false, label:"Missed questions", key:null, start:Date.now(), answered:false, done:false}; renderQ(); }
       window.scrollTo(0, 0); var h = $("#qText") || $("#quizTitle"); if (h) h.focus({preventScroll:true});
       return;
     }
@@ -2230,6 +2752,17 @@ function wire(){
   $("#quizBody").addEventListener("change", function(e){ var f = $("#quizForm"); if (!f || !f.contains(e.target)) return; ["src", "topic", "len", "timed"].forEach(function(k){ QS[k] = f.elements[k].value || QS[k]; }); syncSetup(); });
   $("#quizBody").addEventListener("submit", function(e){ if (e.target.id !== "quizForm") return; e.preventDefault(); startQuiz(); window.scrollTo(0, 0); $("#qText").focus({preventScroll:true}); });
 
+  /* Practice */
+  $("#pracBody").addEventListener("submit", function(e){ e.preventDefault(); if (e.target.id === "typeForm") checkType(false); });
+  $("#pracBody").addEventListener("change", function(e){
+    var f = $("#lsForm"); if (!f || !f.contains(e.target) || !P || P.mode !== "listen") return;
+    var was = P.playing, mix = S.listen.mix;
+    ["gap", "rate", "mix"].forEach(function(k){ S.listen[k] = f.elements[k].value || S.listen[k]; }); save();
+    if (S.listen.mix !== mix){ lsStop(); P.items = lsItems(P.set); P.i = 0; P.phase = "q"; if (was) lsPlay(); else lsPaint(); }
+    else if (was && e.target.name === "rate"){ lsStop(); lsPlay(); }
+  });
+  document.addEventListener("visibilitychange", function(){ if (document.hidden && P && P.mode === "listen" && P.playing){ lsStop(); lsPaint(); } });
+
   /* Search */
   $("#searchQ").addEventListener("input", function(){ clearTimeout(searchT); searchT = setTimeout(runSearch, 140); });
 
@@ -2242,6 +2775,10 @@ function wire(){
       if (e.key === "ArrowRight"){ e.preventDefault(); grade(true); }
       else if (e.key === "ArrowLeft"){ e.preventDefault(); grade(false); }
       else if ((e.key === " " || e.key === "Enter") && tag !== "button" && tag !== "a"){ e.preventDefault(); flipCard(); }
+      else if (S.choices && e.key.length === 1){
+        var k = "1234".indexOf(e.key); if (k < 0) k = "abcd".indexOf(e.key.toLowerCase());
+        var ob = $$("#fc .fc-opt")[k]; if (ob) pickCard(+ob.getAttribute("data-pick"));
+      }
     } else if (!$("#v-quiz").hidden && Q && !Q.done && !Q.answered){
       var i = "1234".indexOf(e.key); if (i < 0) i = "abcd".indexOf(e.key.toLowerCase());
       if (i > -1 && e.key.length === 1){ var b = $$("#quizBody .q-opt")[i]; if (b && !b.disabled) answer(i); }
@@ -2266,7 +2803,7 @@ function wire(){
     });
   });
   $("#btnReset").addEventListener("click", function(){
-    var b = openDlg("Reset my progress?", '<p>This clears your mastered cards, quiz scores, sections read, and every checklist. It can\'t be undone.</p>' +
+    var b = openDlg("Reset my progress?", '<p>This clears your mastered cards, quiz and practice scores, sections read, and every checklist. It can\'t be undone.</p>' +
       '<ul class="checks" style="margin-bottom:1em"><li><label><input type="checkbox" id="resetAll"><span>Also delete my humidor list, regulars, and tasting journal</span></label></li></ul>' +
       '<div class="dlg-actions"><button class="btn danger" type="button" id="doReset">Yes, reset my progress</button><button class="btn" type="button" data-close>Keep my progress</button></div>');
     $("#doReset", b).addEventListener("click", function(){
